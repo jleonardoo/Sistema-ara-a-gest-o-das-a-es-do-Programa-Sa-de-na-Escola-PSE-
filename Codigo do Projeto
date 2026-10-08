@@ -7,6 +7,16 @@ typedef struct{
 	int tipo;
 } Conta;
 
+void criarconta(Conta *novaconta){
+	printf("\n=====================================\n");
+	printf("               CRIAR CONTA               ");
+	printf("\n=====================================\n");
+	printf("digite um nome de usuario:");
+	scanf("%49s", novaconta.usuario);
+	
+	printf("digite uma senha:");
+}
+
 int main(){
 	int conta;
 	printf("\n=====================================\n");
@@ -19,12 +29,10 @@ int main(){
 	
 	switch(conta){
 		case 1:
-			void criarconta(Conta *novaconta){
-				printf("\n=====================================\n");
-				printf("               CRIAR CONTA               ");
-				printf("\n=====================================\n");
-				printf("digite um nome de usuario:");
-			}
+			printf("\n=====================================\n");
+			printf("               CRIAR CONTA               ");
+			printf("\n=====================================\n");
+			printf("digite um nome de usuario:");
 		break;
 		case 2:
 			printf("digite o seu nome de usuario:");
