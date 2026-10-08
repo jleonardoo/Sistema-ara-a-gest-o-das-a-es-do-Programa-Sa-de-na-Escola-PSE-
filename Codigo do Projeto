@@ -1,0 +1,36 @@
+#include <stdio.h> 
+#include <string.h>
+
+typedef struct{
+	char usuario[50];
+	char senha[50];
+	int tipo;
+} Conta;
+
+int main(){
+	int conta;
+	printf("\n=====================================\n");
+	printf("             SISTEMA DO PSE              ");
+	printf("\n=====================================\n");	
+	printf("\n01 - criar conta");
+	printf("\n02 - entrar ");
+
+	scanf("%i", &conta);
+	
+	switch(conta){
+		case 1:
+			void criarconta(Conta *novaconta){
+				printf("\n=====================================\n");
+				printf("               CRIAR CONTA               ");
+				printf("\n=====================================\n");
+				printf("digite um nome de usuario:");
+			}
+		break;
+		case 2:
+			printf("digite o seu nome de usuario:");
+    	break;
+		default:
+			printf("essa opçao n exite!");
+	}
+	return 0;
+}
