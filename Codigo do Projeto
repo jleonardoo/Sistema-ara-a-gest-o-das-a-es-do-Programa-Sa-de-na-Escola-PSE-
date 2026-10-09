@@ -1,5 +1,4 @@
 #include <stdio.h> 
-#include.<stdlib.h>
 #include <string.h>
 
 typedef struct{
@@ -12,7 +11,6 @@ Contas contas[MAX_CONTAS];
 int totalcontas=0;
 
 void criarconta(Conta *novaconta){
-	system("cls"); 
 	printf("\n=====================================\n");
 	printf("               CRIAR CONTA               ");
 	printf("\n=====================================\n");
@@ -51,10 +49,7 @@ int main(){
 	
 	switch(conta){
 		case 1:
-			printf("\n=====================================\n");
-			printf("               CRIAR CONTA               ");
-			printf("\n=====================================\n");
-			printf("digite um nome de usuario:");
+			criarconta();
 		break;
 		case 2:
 			printf("digite o seu nome de usuario:");
