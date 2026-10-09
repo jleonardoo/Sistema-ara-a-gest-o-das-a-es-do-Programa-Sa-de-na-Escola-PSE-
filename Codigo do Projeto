@@ -1,4 +1,5 @@
 #include <stdio.h> 
+#include.<stdlib.h>
 #include <string.h>
 
 typedef struct{
@@ -7,14 +8,35 @@ typedef struct{
 	int tipo;
 } Conta;
 
+Contas contas[MAX_CONTAS];
+int totalcontas=0;
+
 void criarconta(Conta *novaconta){
+	system("cls"); 
 	printf("\n=====================================\n");
 	printf("               CRIAR CONTA               ");
 	printf("\n=====================================\n");
-	printf("digite um nome de usuario:");
+	printf("digite um nome de usuario:\n");
 	scanf("%49s", novaconta.usuario);
 	
-	printf("digite uma senha:");
+	printf("digite uma senha:\n");
+	scanf("%49s", novaconta.senha);
+	
+	printf("\ntipo de conta:\n");
+	printf("01 - administrador\n");
+	printf("02 - profissional da saude\n");
+	printf("03 - profissional da educação\n");
+	
+	if(novaconta.tipo < 1 || novaconta.tipo > 3){
+		printf("tipo de conta invalido!\n");
+		return;
+	}
+	
+	contas[totalcontas]=novascontas;
+	totalcontas++;
+	
+	printf("\n conta criada com sucesso!\n");
+	
 }
 
 int main(){
