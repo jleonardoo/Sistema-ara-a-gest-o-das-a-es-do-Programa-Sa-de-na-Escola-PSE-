@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
 
 #define MAX_CONTAS 100
 
@@ -23,7 +24,7 @@ void criarconta(Conta *novaconta) {
         return;
     }
 
-    printf("Digite um nome de usuario:\n");
+    printf("Digite um nome de usuário:\n");
     scanf("%49s", novaconta->usuario);
 
     printf("Digite uma senha:\n");
@@ -31,8 +32,8 @@ void criarconta(Conta *novaconta) {
 
     printf("\nTipo de conta:\n");
     printf("1 - Administrador\n");
-    printf("2 - Profissional da saude\n");
-    printf("3 - Profissional da educacao\n");
+    printf("2 - Profissional da saúde\n");
+    printf("3 - Profissional da educação\n");
     printf("Escolha: ");
     scanf("%d", &novaconta->tipo);
 
@@ -62,7 +63,7 @@ int login() {
     printf("                 LOGIN\n");
     printf("=====================================\n");
 
-    printf("Digite seu nome de usuario: ");
+    printf("Digite seu nome de usuário: ");
     scanf("%49s", usuario);
 
     printf("Digite sua senha: ");
@@ -79,12 +80,14 @@ int login() {
         }
     }
 
-    printf("\nUsuario ou senha incorretos!\n");
+    printf("\nUsuário ou senha incorretos!\n");
 
     return 0;
 }
 
 int main(){
+	setlocale(LC_ALL, "Portuguese");
+	
 	int conta;
 	int tipo;
 	
@@ -96,7 +99,7 @@ int main(){
 		printf("\n01 - criar conta");
 		printf("\n02 - entrar ");
 		printf("\n03 - sair");
-		printf("\nescolha uma apcao:");
+		printf("\nescolha uma apção:");
 
 		scanf("%i", &conta);
 	
@@ -112,9 +115,9 @@ int main(){
        				if (tipoUsuario == 1) {
             			printf("Bem-vindo, Administrador!\n");
        				} else if (tipoUsuario == 2) {
-           				printf("Bem-vindo, Profissional da Saude!\n");
+           				printf("Bem-vindo, Profissional da Saúde!\n");
         			}else if (tipoUsuario == 3) {
-            			printf("Bem-vindo, Profissional da Educacao!\n");
+            			printf("Bem-vindo, Profissional da Educação!\n");
         			}
     			}
     		break;
@@ -125,17 +128,18 @@ int main(){
 				if(tipo == 1){
 					printf("Bem-vindo, administrador!\n");
 				}else if(tipo == 2){
-					printf("Bem vindo, Proficional da Saude!");
+					printf("Bem vindo, Proficional da Saúde!");
 				}else if(tipo == 3){
-					printf("Bem-vindo, Proficional da Educacao");
+					printf("Bem-vindo, Proficional da Educação!");
 				}
     		break;
     		case 3:
     			printf("encerrando o sistema...\n");
     			return 0;
 			default:
-				printf("essa opcao n exite!");
+				printf("essa opção não exite!");
 		}
 	}
 	return 0;
 }
+
