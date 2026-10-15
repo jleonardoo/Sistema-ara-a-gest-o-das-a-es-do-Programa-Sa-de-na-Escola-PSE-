@@ -69,7 +69,7 @@ int login() {
     printf("Digite sua senha: ");
     scanf("%49s", senha);
 
-    for (i = 0; i < totalcontas; i++) {
+    for (i = 0; i < totalcontas; i++){
 
         if (strcmp(contas[i].usuario, usuario) == 0 &&
             strcmp(contas[i].senha, senha) == 0) {
@@ -85,6 +85,39 @@ int login() {
     return 0;
 }
 
+void menuEducacao(){
+	printf("\n=====================================\n");
+	printf("             MENU DA EDUCAÇÃO            ");
+	printf("\n=====================================\n");
+}
+
+void menuSaude(){
+	printf("\n=====================================\n");
+	printf("              MENU DA SAÚDE              ");
+	printf("\n=====================================\n");
+}
+
+void menuAdministrador(){
+	printf("\n=====================================\n");
+	printf("         MENU DO ADMINISTRADOR           ");
+	printf("\n=====================================\n");
+}
+
+void abrirmenu(Conta conta){
+	switch(conta.tipo){
+		case 1:
+			menuEducacao();
+			break;
+		case 2:
+			menuSaude();
+			break;
+		case 3:
+			menuAdministrador();
+			break;
+		default:
+			printf("tipo de conta invalido!\n");
+	}
+}
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
@@ -109,7 +142,7 @@ int main(){
    				
     			criarconta(&novaconta);
     			
-    			if (totalcontas > 0) {
+    			if (totalcontas > 0){
         		int tipoUsuario = login();
 				
        				if (tipoUsuario == 1) {
@@ -142,4 +175,3 @@ int main(){
 	}
 	return 0;
 }
-
