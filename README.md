@@ -1,2 +1,182 @@
 # Sistema para a gestão das açeõs do Programa Saúde na Escola (PSE)
 Projetar e planejar um protótipo de sistema computacional para a gestão integrada das ações do Programa Saúde na Escola (PSE).
+
+
+
+#include <stdio.h>
+#include <string.h>
+#include <locale.h>
+
+#define MAX_CONTAS 100
+
+typedef struct {
+    char usuario[50];
+    char senha[50];
+    int tipo;
+} Conta;
+
+Conta contas[MAX_CONTAS];
+int totalcontas = 0;
+
+void criarconta(Conta *novaconta) {
+
+    printf("\n=====================================\n");
+    printf("              CRIAR CONTA\n");
+    printf("=====================================\n");
+
+    if (totalcontas >= MAX_CONTAS) {
+        printf("Limite de contas atingido!\n");
+        return;
+    }
+
+    printf("Digite um nome de usuário:\n");
+    scanf("%49s", novaconta->usuario);
+
+    printf("Digite uma senha:\n");
+    scanf("%49s", novaconta->senha);
+
+    printf("\nTipo de conta:\n");
+    printf("1 - Administrador\n");
+    printf("2 - Profissional da saúde\n");
+    printf("3 - Profissional da educação\n");
+    printf("Escolha: ");
+    scanf("%d", &novaconta->tipo);
+
+    if (novaconta->tipo < 1 || novaconta->tipo > 3) {
+        printf("Tipo de conta invalido!\n");
+        return;
+    }
+
+    contas[totalcontas] = *novaconta;
+    totalcontas++;
+
+    printf("\nConta criada com sucesso!\n");
+}
+
+
+int login() {
+    char usuario[50];
+    char senha[50];
+    int i;
+
+    if (totalcontas == 0) {
+        printf("\nNenhuma conta cadastrada!\n");
+        return 0;
+    }
+
+    printf("\n=====================================\n");
+    printf("                 LOGIN\n");
+    printf("=====================================\n");
+
+    printf("Digite seu nome de usuário: ");
+    scanf("%49s", usuario);
+
+    printf("Digite sua senha: ");
+    scanf("%49s", senha);
+
+    for (i = 0; i < totalcontas; i++){
+
+        if (strcmp(contas[i].usuario, usuario) == 0 &&
+            strcmp(contas[i].senha, senha) == 0) {
+
+            printf("\nLogin realizado com sucesso!\n");
+
+            return contas[i].tipo;
+        }
+    }
+
+    printf("\nUsuário ou senha incorretos!\n");
+
+    return 0;
+}
+
+void menuEducacao(){
+	printf("\n=====================================\n");
+	printf("             MENU DA EDUCAÇÃO            ");
+	printf("\n=====================================\n");
+}
+
+void menuSaude(){
+	printf("\n=====================================\n");
+	printf("              MENU DA SAÚDE              ");
+	printf("\n=====================================\n");
+}
+
+void menuAdministrador(){
+	printf("\n=====================================\n");
+	printf("         MENU DO ADMINISTRADOR           ");
+	printf("\n=====================================\n");
+}
+
+void abrirmenu(Conta conta){
+	switch(conta.tipo){
+		case 1:
+			menuEducacao();
+			break;
+		case 2:
+			menuSaude();
+			break;
+		case 3:
+			menuAdministrador();
+			break;
+		default:
+			printf("tipo de conta invalido!\n");
+	}
+}
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	
+	int conta;
+	int tipo;
+	
+	while(3){
+	
+		printf("\n=====================================\n");
+		printf("             SISTEMA DO PSE              ");
+		printf("\n=====================================\n");	
+		printf("\n01 - criar conta");
+		printf("\n02 - entrar ");
+		printf("\n03 - sair");
+		printf("\nescolha uma apção:");
+
+		scanf("%i", &conta);
+	
+		switch(conta){
+			case 1: {
+   				Conta novaconta;
+   				
+    			criarconta(&novaconta);
+    			
+    			if (totalcontas > 0){
+        		int tipoUsuario = login();
+				
+       				if (tipoUsuario == 1) {
+            			printf("Bem-vindo, Administrador!\n");
+       				} else if (tipoUsuario == 2) {
+           				printf("Bem-vindo, Profissional da Saúde!\n");
+        			}else if (tipoUsuario == 3) {
+            			printf("Bem-vindo, Profissional da Educação!\n");
+        			}
+    			}
+    		break;
+			}
+			case 2:
+				tipo = login();
+			
+				if(tipo == 1){
+					printf("Bem-vindo, administrador!\n");
+				}else if(tipo == 2){
+					printf("Bem vindo, Proficional da Saúde!");
+				}else if(tipo == 3){
+					printf("Bem-vindo, Proficional da Educação!");
+				}
+    		break;
+    		case 3:
+    			printf("encerrando o sistema...\n");
+    			return 0;
+			default:
+				printf("essa opção não exite!");
+		}
+	}
+	return 0;
+}
