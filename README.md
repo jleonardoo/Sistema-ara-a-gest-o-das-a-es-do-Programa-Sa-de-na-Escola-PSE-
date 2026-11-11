@@ -6,6 +6,7 @@ Projetar e planejar um protótipo de sistema computacional para a gestão integr
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#include <cstdlib>
 
 #define MAX_CONTAS 100
 
@@ -19,7 +20,9 @@ Conta contas[MAX_CONTAS];
 int totalcontas = 0;
 
 void criarconta(Conta *novaconta) {
-
+	
+	system("CLS");
+	
     printf("\n=====================================\n");
     printf("              CRIAR CONTA\n");
     printf("=====================================\n");
@@ -55,6 +58,9 @@ void criarconta(Conta *novaconta) {
 
 
 int login() {
+
+	system("CLS");
+
     char usuario[50];
     char senha[50];
     int i;
@@ -130,6 +136,8 @@ int main(){
 	int tipo;
 	
 	while(3){
+		
+		system("CLS");
 	
 		printf("\n=====================================\n");
 		printf("             SISTEMA DO PSE              ");
